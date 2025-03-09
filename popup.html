@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      width: 350px;
+      padding: 16px;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    .input-group {
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    label {
+      font-size: 14px;
+      color: #333;
+      font-weight: 500;
+    }
+
+    input {
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    input:focus {
+      border-color: #2196F3;
+    }
+
+    input[type="number"] {
+      width: 120px;
+    }
+
+    button {
+      background-color: #2196F3;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.2s;
+    }
+
+    button:hover {
+      background-color: #1976D2;
+    }
+
+    #matchCount {
+      margin: 12px 0;
+      padding: 8px;
+      background-color: #E3F2FD;
+      border-radius: 4px;
+      color: #1565C0;
+      font-weight: 500;
+    }
+
+    #results {
+      margin-top: 16px;
+    }
+
+    .match-result {
+      margin-bottom: 8px;
+    }
+
+    .match-result a {
+      color: #1976D2;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .match-result a:hover {
+      text-decoration: underline;
+    }
+
+    .controls-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .number-input-group {
+      display: flex;
+      gap: 16px;
+    }
+    .search-help {
+          color: #666;
+          font-size: 12px;
+          margin-top: 4px;
+        }
+  </style>
+</head>
+<body>
+  <div class="input-group">
+    <label for="urlPattern">URL Pattern</label>
+    <div class="controls-row">
+      <input type="text" id="urlPattern" placeholder="Enter URL pattern (e.g., *.example.com/*)">
+      <button id="findLinks">Find</button>
+    </div>
+  </div>
+  
+  <div id="matchCount"></div>
+  
+  <div class="input-group" id="searchContainer" style="display: none;">
+    <label for="searchTerm">Search in matched links</label>
+    <input type="text" id="searchTerm" placeholder="Example: react AND typescript OR javascript">
+    <small class="search-help">
+      Use AND/OR for logical operations (e.g., 'react AND typescript', 'angular OR vue')
+    </small>
+    
+    <div class="number-input-group">
+      <div>
+        <label for="timeout">Page load timeout (ms)</label>
+        <input type="number" id="timeout" value="3000" min="1000" step="500">
+      </div>
+      <div>
+        <label for="batchSize">Concurrent pages</label>
+        <input type="number" id="batchSize" value="3" min="1" max="10">
+      </div>
+    </div>
+    
+    <button id="search">Search</button>
+  </div>
+  
+  <div id="results"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

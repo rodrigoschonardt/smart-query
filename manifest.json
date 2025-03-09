@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Smart Query",
+  "version": "1.0",
+  "description": "Search through links matching a URL pattern",
+  "icons": {
+    "16": "images/logo-16.png",
+    "48": "images/logo-48.png",
+    "128": "images/logo-128.png"
+  },
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/logo-16.png",
+      "48": "images/logo-48.png",
+      "128": "images/logo-128.png"
+    }
+  }
+}
