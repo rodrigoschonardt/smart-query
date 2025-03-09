@@ -145,10 +145,18 @@ function findMatchingLinks(pattern) {
   
   const regex = wildcardToRegex(pattern);
   
-  return links
+  const uniqueLinks = new Map();
+  
+  links
     .filter(link => regex.test(link.href))
-    .map(link => ({
-      href: link.href,
-      text: link.textContent.trim()
-    }));
+    .forEach(link => {
+      if (!uniqueLinks.has(link.href)) {
+        uniqueLinks.set(link.href, {
+          href: link.href,
+          text: link.textContent.trim()
+        });
+      }
+    });
+  
+  return Array.from(uniqueLinks.values());
 }
